@@ -43,15 +43,15 @@ powershell -command "Start-BitsTransfer -Source 'https://github.com/a7ecc/Office
 goto RunOffice
 :RunOffice
 cd "%temp%"
-start OfficeSetup.exe
-exit
+OfficeSetup.exe
+timeout /NOBREAK 10 > nul
 :1
-cd "%ProgramFiles(x86)%\Microsoft Office\Office16"
-cd "%ProgramFiles%\Microsoft Office\Office16"
+cd "%ProgramFiles(x86)%\Microsoft Office\Office16" > nul
+cd "%ProgramFiles%\Microsoft Office\Office16" > nul
 for /f %%x in ('dir /b ..\root\Licenses16\ProPlus2021VL_KMS*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x"
-cscript ospp.vbs /setprt:1688
-cscript ospp.vbs /unpkey:6F7TH >nul
-cscript ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH
-cscript ospp.vbs /sethst:s8.uk.to
-cscript ospp.vbs /act
+%windir%\system32\cscript.exe ospp.vbs /setprt:1688
+%windir%\system32\cscript.exe ospp.vbs /unpkey:6F7TH >nul
+%windir%\system32\cscript.exe ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH
+%windir%\system32\cscript.exe ospp.vbs /sethst:s8.uk.to
+%windir%\system32\cscript.exe ospp.vbs /act
 if exist "%temp%\OfficeSetup.exe" del "%temp%\OfficeSetup.exe"
