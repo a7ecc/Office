@@ -42,15 +42,16 @@ goto RunOffice
 powershell -command "Start-BitsTransfer -Source 'https://github.com/a7ecc/Office/raw/main/EN-Offline.exe' -Destination '%temp%\OfficeSetup.exe'"
 goto RunOffice
 :RunOffice
-start %temp%\OfficeSetup.exe
+cd "%temp%"
+start OfficeSetup.exe
 exit
 :1
-cd /d %ProgramFiles(x86)%\Microsoft Office\Office16
-cd /d %ProgramFiles%\Microsoft Office\Office16
+cd "%ProgramFiles(x86)%\Microsoft Office\Office16"
+cd "%ProgramFiles%\Microsoft Office\Office16"
 for /f %%x in ('dir /b ..\root\Licenses16\ProPlus2021VL_KMS*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x"
 cscript ospp.vbs /setprt:1688
 cscript ospp.vbs /unpkey:6F7TH >nul
 cscript ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH
 cscript ospp.vbs /sethst:s8.uk.to
 cscript ospp.vbs /act
-if exist %temp%\OfficeSetup.exe del %temp%\OfficeSetup.exe
+if exist "%temp%\OfficeSetup.exe" del "%temp%\OfficeSetup.exe"
