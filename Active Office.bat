@@ -1,7 +1,6 @@
 @echo off
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 title Active Office
-color a
 if exist "%ProgramFiles(x86)%\Microsoft Office\Office16" goto 1
 if exist "%ProgramFiles%\Microsoft Office\Office16" goto 1
 :run
